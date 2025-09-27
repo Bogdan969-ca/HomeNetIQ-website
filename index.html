@@ -139,17 +139,26 @@
   <section id="contact" class="container">
     <h2 class="section-title">Contact</h2>
     <p>Tell us a bit about your setup and the issues you’re facing. We’ll get back to you with options and a transparent estimate.</p>
-    <!-- Netlify Forms with honeypot -->
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/">
-      <input type="hidden" name="form-name" value="contact" />
-      <p class="hidden" style="position:absolute; left:-9999px; opacity:0;">
-        <label>Don’t fill this out: <input name="bot-field" /></label>
-      </p>
-      <input name="name" placeholder="Your name" required />
-      <input name="email" type="email" placeholder="Email" required />
-      <input name="phone" type="tel" placeholder="Phone (optional)" />
-      <textarea name="message" placeholder="What can we help with?" required></textarea>
-      <button class="btn" type="submit">Send</button>
+    
+    <form <form action="https://formspree.io/f/xeorerbw" method="POST">
+  <!-- Optional subject shown in email -->
+  <input type="hidden" name="_subject" value="New inquiry from HomeNetIQ site">
+  <!-- Redirect after submit -->
+  <input type="hidden" name="_redirect" value="https://homenetiq.ca/thanks.html">
+
+  <!-- Simple honeypot (spam trap) -->
+  <p class="hidden" style="position:absolute; left:-9999px; opacity:0;">
+    <label>Don’t fill this out: <input name="bot-field" /></label>
+  </p>
+
+  <input name="name" placeholder="Your name" required />
+  <input name="email" type="email" placeholder="Email" required />
+  <input name="phone" type="tel" placeholder="Phone (optional)" />
+  <textarea name="message" placeholder="What can we help with?" required></textarea>
+
+  <button class="btn" type="submit">Send</button>
+</form>
+
     </form>
     <p style="color:var(--muted);font-size:14px;margin-top:6px">Prefer direct email? Write to <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a>. Edmonton & area on‑site service.</p>
   </section>
