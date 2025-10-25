@@ -2,28 +2,337 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy — HomeNetIQ</title>
+  <meta name="description" content="HomeNetIQ Privacy Policy. How we collect, use, and protect your information when you contact us or use our site." />
+
+  <!-- Strict security for a static document (no scripts needed here) -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests">
+
+  <style>
+    :root{
+      /* match the main site's palette */
+      --bg:#0b0f14;
+      --bg2:#0d141e;
+      --fg:#eaf1ff;
+      --muted:#9bb3d1;
+      --card:#121823;
+      --line:#1f2b3d;
+      --brand:#6aa6ff;
+      --ring:#264a86;
+      --ok:#4ade80;
+      --warn:#f59e0b;
+      --err:#ef4444;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;scroll-behavior:smooth}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color:var(--fg);
+      background:
+        radial-gradient(1200px 600px at 100% -10%, #18304f22, transparent),
+        linear-gradient(180deg, var(--bg), var(--bg) 60%, var(--bg2));
+    }
+
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    .grid{
+      display:grid;
+      grid-template-columns: 290px 1fr;
+      gap:24px;
+      align-items:start;
+    }
+    /* sticky table of contents */
+    .toc{
+      position:sticky; top:16px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+    .toc h2{
+      margin:0 0 8px; font-size:16px; color:var(--muted); font-weight:700;
+    }
+    .toc ol{margin:0; padding-left:20px}
+    .toc a{display:block; padding:6px 0}
+
+    /* main card */
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    header.policy-head{
+      margin-bottom:18px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      flex-wrap:wrap;
+    }
+    .badge{display:inline-block; font-size:12px; padding:6px 10px; border-radius:999px; background:#122036; color:#b7cdf0; border:1px solid #1f3353}
+    h1{font-size:34px; margin:0 0 8px}
+    h2{font-size:22px; margin:18px 0 8px}
+    p{color:var(--muted); line-height:1.7; margin:0 0 12px}
+    ul,ol{color:var(--muted); line-height:1.7; margin:0 0 12px 22px}
+
+    /* numbered section label */
+    .sec{
+      border-top:1px solid var(--line);
+      padding-top:18px; margin-top:18px;
+    }
+    .sec:first-of-type{border-top:none; padding-top:0; margin-top:0}
+    .sec .num{
+      display:inline-grid; place-items:center;
+      width:28px; height:28px; border-radius:8px;
+      background:linear-gradient(180deg,#79b1ff,#478dff);
+      color:#07111f; font-weight:900; margin-right:8px;
+    }
+    .sec h2{display:flex; align-items:center; gap:8px; margin-top:6px}
+
+    /* simple on-page pagination controls */
+    .pager{
+      display:flex; justify-content:space-between; align-items:center;
+      border-top:1px dashed #1b2a44; padding-top:14px; margin-top:16px;
+    }
+    .btn{
+      display:inline-block; padding:10px 14px; border-radius:12px; font-weight:700;
+      background:#1a2636; color:var(--fg); border:1px solid #26364f; text-decoration:none;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:var(--brand); color:#08101b}
+
+    /* footer */
+    footer{
+      margin-top:26px; text-align:center; color:#89a2c4;
+      border-top:1px solid #1c2636; padding:22px 12px;
+    }
+
+    /* mobile */
+    @media (max-width:900px){ .grid{grid-template-columns:1fr} .toc{position:relative} }
+    @media (max-width:620px){ h1{font-size:28px} }
+    @media print{
+      body{background:#fff; color:#111}
+      .wrap{max-width:none}
+      .grid{grid-template-columns:1fr}
+      .toc{display:none}
+      .card, footer{border:none; box-shadow:none}
+      a{color:#0645ad}
+    }
+  </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p>Effective Date: September 2025</p>
+  <div class="wrap">
+    <div class="grid">
+      <!-- Sticky Table of Contents -->
+      <aside class="toc">
+        <h2>On this page</h2>
+        <ol>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#collect">Information we collect</a></li>
+          <li><a href="#use">How we use information</a></li>
+          <li><a href="#legal">Legal bases</a></li>
+          <li><a href="#share">When we share information</a></li>
+          <li><a href="#cookies">Cookies & tracking</a></li>
+          <li><a href="#retention">Retention</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#transfers">International transfers</a></li>
+          <li><a href="#rights">Your choices & rights</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#changes">Changes to this policy</a></li>
+          <li><a href="#contact">Contact us</a></li>
+        </ol>
+      </aside>
 
-  <h2>1. Information We Collect</h2>
-  <p>We may collect personal information you provide through our contact form (such as name, email, phone number) and technical information automatically collected by your browser.</p>
+      <!-- Main Content -->
+      <main class="card">
+        <header class="policy-head">
+          <div>
+            <h1>Privacy Policy</h1>
+            <p class="badge">Proudly serving Edmonton — the capital city of Alberta — and surrounding areas</p>
+          </div>
+          <div>
+            <span class="badge">Effective: September 2025</span>
+          </div>
+        </header>
 
-  <h2>2. How We Use Information</h2>
-  <p>We use the information to respond to inquiries, provide services, and improve our website. We do not sell your data.</p>
+        <!-- 1. Overview -->
+        <section id="overview" class="sec">
+          <h2><span class="num">1</span> Overview</h2>
+          <p>HomeNetIQ (“we”, “us”) provides home networking, device support, and practical AI services for homes and small offices. This policy explains what we collect, how we use it, and your choices. It applies to our website <strong>homenetiq.ca</strong> and to messages you send us (e.g., email or the contact form).</p>
+          <div class="pager">
+            <span></span>
+            <a class="btn primary" href="#collect">Next: Information we collect →</a>
+          </div>
+        </section>
 
-  <h2>3. Sharing of Information</h2>
-  <p>We only share information as required by law, or with service providers that help us operate our business (such as email hosting providers).</p>
+        <!-- 2. Collect -->
+        <section id="collect" class="sec">
+          <h2><span class="num">2</span> Information we collect</h2>
+          <ul>
+            <li><strong>Information you provide</strong> — name, email, phone number, and message content when you contact us via the website or by email.</li>
+            <li><strong>Technical information</strong> — standard data your browser sends (IP address, user agent, pages viewed). We do not sell or broker personal data.</li>
+            <li><strong>Service providers</strong> — we use trusted vendors to operate our site: Form submissions may be processed by Formspree; basic traffic metrics may be measured by Google Analytics.</li>
+          </ul>
+          <div class="pager">
+            <a class="btn" href="#overview">← Previous: Overview</a>
+            <a class="btn primary" href="#use">Next: How we use information →</a>
+          </div>
+        </section>
 
-  <h2>4. Cookies & Third-Party Services</h2>
-  <p>If we display advertising or analytics, third parties may use cookies. You can disable cookies in your browser settings.</p>
+        <!-- 3. Use -->
+        <section id="use" class="sec">
+          <h2><span class="num">3</span> How we use information</h2>
+          <ul>
+            <li>To respond to inquiries and deliver requested services.</li>
+            <li>To operate, secure, and improve our website and support processes.</li>
+            <li>To communicate with you about scheduling, support, and service updates.</li>
+            <li>To comply with legal obligations and enforce agreements.</li>
+          </ul>
+          <div class="pager">
+            <a class="btn" href="#collect">← Previous: Information we collect</a>
+            <a class="btn primary" href="#legal">Next: Legal bases →</a>
+          </div>
+        </section>
 
-  <h2>5. Your Rights</h2>
-  <p>You may request access, correction, or deletion of your information by contacting us at <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a>.</p>
+        <!-- 4. Legal bases -->
+        <section id="legal" class="sec">
+          <h2><span class="num">4</span> Legal bases</h2>
+          <p>Where applicable (e.g., under Canadian and international privacy laws), we process information on one or more of the following bases:</p>
+          <ul>
+            <li><strong>Consent</strong> — e.g., when you submit our contact form.</li>
+            <li><strong>Contract</strong> — to provide services you requested.</li>
+            <li><strong>Legitimate interests</strong> — to operate and protect our services (balanced against your rights).</li>
+            <li><strong>Legal obligation</strong> — to comply with applicable laws.</li>
+          </ul>
+          <div class="pager">
+            <a class="btn" href="#use">← Previous: How we use information</a>
+            <a class="btn primary" href="#share">Next: When we share →</a>
+          </div>
+        </section>
 
-  <h2>6. Contact Us</h2>
-  <p>HomeNetIQ<br>Alberta, Canada<br>Email: support@homenetiq.ca</p>
+        <!-- 5. Sharing -->
+        <section id="share" class="sec">
+          <h2><span class="num">5</span> When we share information</h2>
+          <ul>
+            <li><strong>Vendors/Service providers</strong> — strictly to help us run our website and email (e.g., Formspree for form handling, email providers). They are bound by confidentiality obligations.</li>
+            <li><strong>Legal and safety</strong> — if required by law or to protect our rights, users, or the public.</li>
+            <li>We do <strong>not</strong> sell your personal information.</li>
+          </ul>
+          <div class="pager">
+            <a class="btn" href="#legal">← Previous: Legal bases</a>
+            <a class="btn primary" href="#cookies">Next: Cookies & tracking →</a>
+          </div>
+        </section>
+
+        <!-- 6. Cookies -->
+        <section id="cookies" class="sec">
+          <h2><span class="num">6</span> Cookies & tracking</h2>
+          <p>Our site is lightweight and privacy-minded. If enabled, we may use:</p>
+          <ul>
+            <li><strong>Essential site cookies</strong> — to deliver the site securely.</li>
+            <li><strong>Analytics</strong> — Google Analytics may collect aggregated usage metrics (e.g., page views, referrers). You can opt out via your browser’s settings or add-ons from Google.</li>
+            <li><strong>No ads</strong> — we don’t run behavioral advertising on this site.</li>
+          </ul>
+          <p>You can control cookies through your browser settings and privacy tools.</p>
+          <div class="pager">
+            <a class="btn" href="#share">← Previous: When we share</a>
+            <a class="btn primary" href="#retention">Next: Retention →</a>
+          </div>
+        </section>
+
+        <!-- 7. Retention -->
+        <section id="retention" class="sec">
+          <h2><span class="num">7</span> Retention</h2>
+          <p>We retain information only as long as needed for the purposes described in this policy, to provide services, or to meet legal, accounting, or reporting requirements. When no longer required, we delete or anonymize it.</p>
+          <div class="pager">
+            <a class="btn" href="#cookies">← Previous: Cookies & tracking</a>
+            <a class="btn primary" href="#security">Next: Security →</a>
+          </div>
+        </section>
+
+        <!-- 8. Security -->
+        <section id="security" class="sec">
+          <h2><span class="num">8</span> Security</h2>
+          <p>We use reasonable technical and organizational safeguards suitable for a small business, including HTTPS, limited access to submissions, and vendor due diligence. No method of transmission or storage is 100% secure; please use caution when sharing sensitive details online.</p>
+          <div class="pager">
+            <a class="btn" href="#retention">← Previous: Retention</a>
+            <a class="btn primary" href="#transfers">Next: International transfers →</a>
+          </div>
+        </section>
+
+        <!-- 9. Transfers -->
+        <section id="transfers" class="sec">
+          <h2><span class="num">9</span> International transfers</h2>
+          <p>Our trusted vendors may process data in other countries. We choose providers with appropriate safeguards and contracts to protect your information.</p>
+          <div class="pager">
+            <a class="btn" href="#security">← Previous: Security</a>
+            <a class="btn primary" href="#rights">Next: Your choices & rights →</a>
+          </div>
+        </section>
+
+        <!-- 10. Rights -->
+        <section id="rights" class="sec">
+          <h2><span class="num">10</span> Your choices & rights</h2>
+          <ul>
+            <li>Request access to, correction of, or deletion of your information.</li>
+            <li>Withdraw consent where processing is based on consent.</li>
+            <li>Object to or restrict certain processing where permitted by law.</li>
+          </ul>
+          <p>To exercise these rights, contact us at <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a>. We may need to verify your identity before fulfilling a request.</p>
+          <div class="pager">
+            <a class="btn" href="#transfers">← Previous: International transfers</a>
+            <a class="btn primary" href="#children">Next: Children →</a>
+          </div>
+        </section>
+
+        <!-- 11. Children -->
+        <section id="children" class="sec">
+          <h2><span class="num">11</span> Children</h2>
+          <p>Our website and services are intended for adults. If you believe a child has provided us information, please contact us and we’ll take appropriate steps to remove it.</p>
+          <div class="pager">
+            <a class="btn" href="#rights">← Previous: Your choices & rights</a>
+            <a class="btn primary" href="#changes">Next: Changes to this policy →</a>
+          </div>
+        </section>
+
+        <!-- 12. Changes -->
+        <section id="changes" class="sec">
+          <h2><span class="num">12</span> Changes to this policy</h2>
+          <p>We may update this Privacy Policy from time to time. When we post changes, we’ll update the “Effective” date above. Significant changes will be highlighted on this page.</p>
+          <div class="pager">
+            <a class="btn" href="#children">← Previous: Children</a>
+            <a class="btn primary" href="#contact">Next: Contact us →</a>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="sec">
+          <h2>Contact us</h2>
+          <p>Questions about this policy or your information?</p>
+          <ul>
+            <li><strong>HomeNetIQ</strong></li>
+            <li>Edmonton, Alberta, Canada</li>
+            <li>Email: <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a></li>
+            <li>Phone: <a href="tel:+15878552210">+1 (587) 855-2210</a></li>
+          </ul>
+          <div class="pager">
+            <a class="btn" href="#changes">← Previous: Changes to this policy</a>
+            <a class="btn" href="#overview">Back to top ↑</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      © 2025 HomeNetIQ — Edmonton &amp; area · All rights reserved.<br>
+      <a href="/">Home</a> · <a href="/terms.html">Terms of Use</a> · <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a> · <a href="tel:+15878552210">+1 (587) 855-2210</a>
+    </footer>
+  </div>
 </body>
 </html>
