@@ -2,31 +2,271 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Terms of Use — HomeNetIQ</title>
+  <meta name="description" content="HomeNetIQ Terms of Use. Rules for using our website and contacting us for services in Edmonton and area." />
+
+  <!-- Strict security for a static legal page (no JS required here) -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests">
+
+  <style>
+    :root{
+      /* match site palette */
+      --bg:#0b0f14; --bg2:#0d141e; --fg:#eaf1ff; --muted:#9bb3d1;
+      --card:#121823; --line:#1f2b3d; --brand:#6aa6ff; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;scroll-behavior:smooth}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color:var(--fg);
+      background:
+        radial-gradient(1200px 600px at 100% -10%, #18304f22, transparent),
+        linear-gradient(180deg, var(--bg), var(--bg) 60%, var(--bg2));
+    }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    .grid{display:grid;grid-template-columns:290px 1fr;gap:24px;align-items:start}
+
+    .toc{
+      position:sticky; top:16px;
+      background:var(--card); border:1px solid var(--line); border-radius:16px;
+      padding:16px; box-shadow:var(--shadow)
+    }
+    .toc h2{margin:0 0 8px; font-size:16px; color:var(--muted); font-weight:700}
+    .toc ol{margin:0; padding-left:20px}
+    .toc a{display:block; padding:6px 0}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+    header.legal-head{
+      margin-bottom:18px; display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+    .badge{display:inline-block; font-size:12px; padding:6px 10px; border-radius:999px; background:#122036; color:#b7cdf0; border:1px solid #1f3353}
+    h1{font-size:34px; margin:0 0 8px}
+    h2{font-size:22px; margin:18px 0 8px}
+    p{color:var(--muted); line-height:1.7; margin:0 0 12px}
+    ul,ol{color:var(--muted); line-height:1.7; margin:0 0 12px 22px}
+
+    .sec{border-top:1px solid var(--line); padding-top:18px; margin-top:18px}
+    .sec:first-of-type{border-top:none; padding-top:0; margin-top:0}
+    .sec .num{
+      display:inline-grid; place-items:center; width:28px; height:28px; border-radius:8px;
+      background:linear-gradient(180deg,#79b1ff,#478dff); color:#07111f; font-weight:900; margin-right:8px;
+    }
+    .sec h2{display:flex; align-items:center; gap:8px; margin-top:6px}
+
+    .pager{
+      display:flex; justify-content:space-between; align-items:center;
+      border-top:1px dashed #1b2a44; padding-top:14px; margin-top:16px;
+    }
+    .btn{
+      display:inline-block; padding:10px 14px; border-radius:12px; font-weight:700;
+      background:#1a2636; color:var(--fg); border:1px solid #26364f; text-decoration:none;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:var(--brand); color:#08101b}
+
+    footer{
+      margin-top:26px; text-align:center; color:#89a2c4;
+      border-top:1px solid #1c2636; padding:22px 12px;
+    }
+
+    @media (max-width:900px){ .grid{grid-template-columns:1fr} .toc{position:relative} }
+    @media (max-width:620px){ h1{font-size:28px} }
+    @media print{
+      body{background:#fff; color:#111}
+      .wrap{max-width:none}
+      .grid{grid-template-columns:1fr}
+      .toc{display:none}
+      .card, footer{border:none; box-shadow:none}
+      a{color:#0645ad}
+    }
+  </style>
 </head>
 <body>
-  <h1>Terms of Use</h1>
-  <p>Effective Date: September 2025</p>
+  <div class="wrap">
+    <div class="grid">
+      <!-- Sticky TOC -->
+      <aside class="toc">
+        <h2>On this page</h2>
+        <ol>
+          <li><a href="#overview">Overview & acceptance</a></li>
+          <li><a href="#changes">Changes to these terms</a></li>
+          <li><a href="#services">About our services</a></li>
+          <li><a href="#acceptable">Acceptable use</a></li>
+          <li><a href="#ip">Ownership & intellectual property</a></li>
+          <li><a href="#links">Third-party services & links</a></li>
+          <li><a href="#disclaimer">No warranties</a></li>
+          <li><a href="#liability">Limitation of liability</a></li>
+          <li><a href="#indemnity">Indemnity</a></li>
+          <li><a href="#termination">Suspension/termination</a></li>
+          <li><a href="#law">Governing law</a></li>
+          <li><a href="#contact">Contact us</a></li>
+        </ol>
+      </aside>
 
-  <h2>1. Acceptance of Terms</h2>
-  <p>By using this website, you agree to these Terms of Use and all applicable laws.</p>
+      <!-- Main -->
+      <main class="card">
+        <header class="legal-head">
+          <div>
+            <h1>Terms of Use</h1>
+            <p class="badge">Proudly serving Edmonton — the capital city of Alberta — and surrounding areas</p>
+          </div>
+          <div><span class="badge">Effective: September 2025</span></div>
+        </header>
 
-  <h2>2. Intellectual Property</h2>
-  <p>All content on this site, including text, graphics, logos, and design, is the property of HomeNetIQ unless otherwise noted.</p>
+        <!-- 1 -->
+        <section id="overview" class="sec">
+          <h2><span class="num">1</span> Overview & acceptance</h2>
+          <p>Welcome to <strong>HomeNetIQ</strong> (“we”, “us”). By accessing or using our website at <strong>homenetiq.ca</strong> (the “Site”), you agree to these Terms of Use. If you do not agree, please do not use the Site. These terms govern your use of the Site only and do not replace written service agreements for on-site or remote work.</p>
+          <div class="pager">
+            <span></span>
+            <a class="btn primary" href="#changes">Next: Changes to these terms →</a>
+          </div>
+        </section>
 
-  <h2>3. Use of Website</h2>
-  <p>You may use this site for lawful purposes only. You may not attempt to disrupt its operation or misuse its content.</p>
+        <!-- 2 -->
+        <section id="changes" class="sec">
+          <h2><span class="num">2</span> Changes to these terms</h2>
+          <p>We may update these Terms from time to time to reflect operational, legal, or regulatory changes. When we post updates, the “Effective” date above will change. Your continued use of the Site after changes are posted means you accept the updated Terms.</p>
+          <div class="pager">
+            <a class="btn" href="#overview">← Previous: Overview</a>
+            <a class="btn primary" href="#services">Next: About our services →</a>
+          </div>
+        </section>
 
-  <h2>4. Disclaimer of Liability</h2>
-  <p>Content on this site is provided for general information. HomeNetIQ is not liable for damages arising from the use or inability to use this website.</p>
+        <!-- 3 -->
+        <section id="services" class="sec">
+          <h2><span class="num">3</span> About our services</h2>
+          <ul>
+            <li>The Site provides information about home/office networking, device support, smart-home setup, and practical AI coaching. It is informational only; no user accounts or online purchases are offered.</li>
+            <li>Any quotes or time estimates discussed via email or phone are non-binding until confirmed in writing. On-site visits require safe access and permission from the property owner/tenant.</li>
+            <li>We may link to manuals, vendor documentation, or third-party tools as references.</li>
+          </ul>
+          <div class="pager">
+            <a class="btn" href="#changes">← Previous: Changes</a>
+            <a class="btn primary" href="#acceptable">Next: Acceptable use →</a>
+          </div>
+        </section>
 
-  <h2>5. Third-Party Links</h2>
-  <p>This website may contain links to third-party websites. HomeNetIQ is not responsible for their content or privacy practices.</p>
+        <!-- 4 -->
+        <section id="acceptable" class="sec">
+          <h2><span class="num">4</span> Acceptable use</h2>
+          <p>You agree to use the Site lawfully and responsibly. You will not:</p>
+          <ul>
+            <li>Attempt to interfere with or compromise the Site’s security or availability.</li>
+            <li>Scrape, copy, or republish content at scale without permission.</li>
+            <li>Upload or transmit malware or harmful code.</li>
+            <li>Impersonate others or misrepresent your affiliation with us.</li>
+          </ul>
+          <div class="pager">
+            <a class="btn" href="#services">← Previous: About our services</a>
+            <a class="btn primary" href="#ip">Next: Ownership & IP →</a>
+          </div>
+        </section>
 
-  <h2>6. Governing Law</h2>
-  <p>These terms are governed by the laws of Alberta, Canada.</p>
+        <!-- 5 -->
+        <section id="ip" class="sec">
+          <h2><span class="num">5</span> Ownership & intellectual property</h2>
+          <p>Unless otherwise noted, all text, graphics, logos, and layout on the Site are the property of HomeNetIQ and are protected by applicable intellectual-property laws. You may link to our Site and print or download a reasonable number of pages for personal, non-commercial use, provided you do not modify notices or misrepresent affiliation.</p>
+          <div class="pager">
+            <a class="btn" href="#acceptable">← Previous: Acceptable use</a>
+            <a class="btn primary" href="#links">Next: Third-party services →</a>
+          </div>
+        </section>
 
-  <h2>7. Contact Us</h2>
-  <p>If you have questions about these Terms, contact us at <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a>.</p>
+        <!-- 6 -->
+        <section id="links" class="sec">
+          <h2><span class="num">6</span> Third-party services & links</h2>
+          <p>The Site may reference third-party vendors (e.g., equipment makers, Formspree for forms, Google Analytics for traffic metrics). Those services have their own terms and privacy policies. We are not responsible for their content or practices, and inclusion of links does not imply endorsement.</p>
+          <div class="pager">
+            <a class="btn" href="#ip">← Previous: Ownership & IP</a>
+            <a class="btn primary" href="#disclaimer">Next: No warranties →</a>
+          </div>
+        </section>
+
+        <!-- 7 -->
+        <section id="disclaimer" class="sec">
+          <h2><span class="num">7</span> No warranties</h2>
+          <p>The Site and its content are provided on an “as-is” and “as-available” basis. We make no warranties of any kind, express or implied, including but not limited to warranties of accuracy, reliability, or fitness for a particular purpose. Advice or tips on the Site are general information, not a substitute for professional assessment of your specific environment.</p>
+          <div class="pager">
+            <a class="btn" href="#links">← Previous: Third-party services</a>
+            <a class="btn primary" href="#liability">Next: Limitation of liability →</a>
+          </div>
+        </section>
+
+        <!-- 8 -->
+        <section id="liability" class="sec">
+          <h2><span class="num">8</span> Limitation of liability</h2>
+          <p>To the fullest extent permitted by law, HomeNetIQ and its owners are not liable for indirect, incidental, consequential, special, or exemplary damages arising from or related to your use of the Site. Our total liability for any claim related to the Site will not exceed CAD $100.</p>
+          <div class="pager">
+            <a class="btn" href="#disclaimer">← Previous: No warranties</a>
+            <a class="btn primary" href="#indemnity">Next: Indemnity →</a>
+          </div>
+        </section>
+
+        <!-- 9 -->
+        <section id="indemnity" class="sec">
+          <h2><span class="num">9</span> Indemnity</h2>
+          <p>You agree to defend, indemnify, and hold harmless HomeNetIQ from claims, losses, liabilities, and expenses (including reasonable legal fees) arising from your misuse of the Site or violation of these Terms.</p>
+          <div class="pager">
+            <a class="btn" href="#liability">← Previous: Limitation of liability</a>
+            <a class="btn primary" href="#termination">Next: Suspension/termination →</a>
+          </div>
+        </section>
+
+        <!-- 10 -->
+        <section id="termination" class="sec">
+          <h2><span class="num">10</span> Suspension/termination</h2>
+          <p>We may suspend or restrict access to the Site at any time, with or without notice, if we believe it is necessary to protect the Site, our users, or comply with the law.</p>
+          <div class="pager">
+            <a class="btn" href="#indemnity">← Previous: Indemnity</a>
+            <a class="btn primary" href="#law">Next: Governing law →</a>
+          </div>
+        </section>
+
+        <!-- 11 -->
+        <section id="law" class="sec">
+          <h2><span class="num">11</span> Governing law</h2>
+          <p>These Terms are governed by the laws of the Province of Alberta and the applicable laws of Canada, without regard to conflict-of-laws principles. The courts located in Edmonton, Alberta will have exclusive jurisdiction over disputes arising from or relating to these Terms or the Site.</p>
+          <div class="pager">
+            <a class="btn" href="#termination">← Previous: Suspension/termination</a>
+            <a class="btn primary" href="#contact">Next: Contact us →</a>
+          </div>
+        </section>
+
+        <!-- 12 -->
+        <section id="contact" class="sec">
+          <h2>Contact us</h2>
+          <p>If you have questions about these Terms, contact:</p>
+          <ul>
+            <li><strong>HomeNetIQ</strong></li>
+            <li>Edmonton, Alberta, Canada</li>
+            <li>Email: <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a></li>
+            <li>Phone: <a href="tel:+15878552210">+1 (587) 855-2210</a></li>
+          </ul>
+          <div class="pager">
+            <a class="btn" href="#law">← Previous: Governing law</a>
+            <a class="btn" href="#overview">Back to top ↑</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      © 2025 HomeNetIQ — Edmonton &amp; area · All rights reserved.<br>
+      <a href="/">Home</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a> · <a href="tel:+15878552210">+1 (587) 855-2210</a>
+    </footer>
+  </div>
 </body>
 </html>
+
