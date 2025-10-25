@@ -93,13 +93,29 @@
   margin: 0 6px;
   white-space: nowrap;
 }
-p[style*="Proudly serving Edmonton"] {
-  animation: fadeIn 1.5s ease-in-out;
-}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
+}
+/* Local service note under hero */
+.local-note{
+  text-align:center;
+  font-weight:600;
+  color:var(--muted);
+  font-size:17px;
+  margin-top:8px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@media (max-width:620px){
+  .local-note{ font-size:15px; }
+}
+
+/* already present in your file; keep it */
+@keyframes fadeIn{
+  from{ opacity:0; transform:translateY(6px); }
+  to  { opacity:1; transform:translateY(0); }
 }
 
   </style>
@@ -117,9 +133,7 @@ p[style*="Proudly serving Edmonton"] {
   </nav>
 
   <header class="hero container">
-    <p style="text-align:center; font-weight:600; color:var(--muted); font-size:17px; margin-top:8px;">
-  Proudly serving Edmonton — the capital city of Alberta — and surrounding areas.
-</p>
+    <p <p class="local-note">Proudly serving Edmonton — the capital city of Alberta — and surrounding areas.</p>
 
     <h1>Smarter homes, simpler tech: Reliable Wi-Fi, seamless devices, and AI made practical for everyday life.</h1>
     <p style="color:var(--muted);font-size:16px;margin-top:10px">
