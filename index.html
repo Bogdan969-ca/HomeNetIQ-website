@@ -14,8 +14,8 @@
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     img-src 'self' data:;
-    font-src 'self';
-    style-src 'self' 'unsafe-inline';
+    font-src 'self' https://cdnjs.cloudflare.com;
+    style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
     script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;
     connect-src 'self' https://formspree.io https://www.google-analytics.com;
     object-src 'none';
@@ -23,6 +23,9 @@
     frame-ancestors 'none';
     form-action 'self' https://formspree.io;
     upgrade-insecure-requests">
+
+  <!-- Font Awesome for footer trust-badge icons (matches tools page) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
     :root{
@@ -40,10 +43,10 @@
 
     body{
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      /* Smooth, consistent background top-to-bottom */
       background:
         radial-gradient(circle at 0% -40%, rgba(72,105,246,0.45), transparent 60%),
-        radial-gradient(circle at 100% 140%, rgba(20,210,255,0.25), transparent 60%),
-        linear-gradient(180deg, #050818, #050818 60%, #0d141e);
+        linear-gradient(180deg, #050818, #071a30);
       color:var(--fg);
     }
 
@@ -175,7 +178,7 @@
       text-align:center;
     }
 
-    /* Security & Trust Footer Badge */
+    /* Security & Trust Footer Badge (match tools page, with icons) */
     .trust-badge {
       margin-top: 10px;
       font-size: 13px;
@@ -187,6 +190,9 @@
       display: inline-block;
       margin: 0 6px;
       white-space: nowrap;
+    }
+    .trust-badge i {
+      margin-right: 4px;
     }
 
     @keyframes fadeIn {
@@ -341,9 +347,9 @@
   </footer>
 
   <div class="trust-badge">
-    <span>🔒 HTTPS Secured</span> |
-    <span>🛡️ Cloudflare Protected</span> |
-    <span>💾 Privacy-Focused Hosting</span>
+    <span><i class="fa-solid fa-lock"></i>HTTPS Secured</span> |
+    <span><i class="fa-solid fa-shield-halved"></i>Cloudflare Protected</span> |
+    <span><i class="fa-solid fa-floppy-disk"></i>Privacy-Focused Hosting</span>
   </div>
 </body>
 </html>
