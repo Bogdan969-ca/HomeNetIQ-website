@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Page Not Found — HomeNetIQ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The page you’re looking for could not be found. HomeNetIQ provides in-home Wi-Fi, smart-home, and AI support across Edmonton." />
+
+  <!-- Security: CSP similar to main site so icons and analytics work -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    img-src 'self' data:;
+    font-src 'self' https://cdnjs.cloudflare.com;
+    style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+    script-src 'self';
+    connect-src 'self';
+    object-src 'none';
+    base-uri 'none';
+    frame-ancestors 'none';
+    upgrade-insecure-requests">
+
+  <!-- Font Awesome for trust-badge icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+      --hn-bg: #050818;
+      --hn-card: rgba(10, 17, 43, 0.97);
+      --hn-border-soft: rgba(255, 255, 255, 0.16);
+      --hn-accent: #4869f6;
+      --hn-accent-soft: rgba(72, 105, 246, 0.18);
+      --hn-text-main: #f5f7ff;
+      --hn-text-soft: rgba(245, 247, 255, 0.78);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 0% -40%, rgba(72, 105, 246, 0.45), transparent 60%),
+        radial-gradient(circle at 100% 140%, rgba(20, 210, 255, 0.25), transparent 60%),
+        var(--hn-bg);
+      color: var(--hn-text-main);
+    }
+
+    a {
+      color: #a8b8ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* Header / nav */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(5, 8, 24, 0.96), rgba(5, 8, 24, 0.82));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 10% 0%, #ffffff, #a8b8ff 20%, #4869f6 65%, #050818 100%);
+      box-shadow: 0 0 18px rgba(72, 105, 246, 0.75);
+    }
+
+    .brand-text {
+      font-size: 1rem;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 400;
+      opacity: 0.75;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--hn-text-soft);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      border-color: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.04);
+      text-decoration: none;
+    }
+
+    .nav-links .nav-primary {
+      border-color: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--hn-text-main);
+    }
+
+    /* Layout */
+
+    .error-page {
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .error-card {
+      background: var(--hn-card);
+      border-radius: 1.3rem;
+      padding: 2.2rem 2.1rem 2.4rem;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .error-kicker {
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245, 247, 255, 0.6);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(2rem, 3vw, 2.4rem);
+    }
+
+    .error-code {
+      font-weight: 600;
+      color: rgba(245, 247, 255, 0.7);
+      margin-bottom: 0.75rem;
+    }
+
+    .error-text {
+      margin: 0.35rem 0 1.3rem;
+      color: var(--hn-text-soft);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .helper-list {
+      margin: 0 0 1.5rem 1.1rem;
+      padding: 0;
+      color: var(--hn-text-soft);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .helper-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Buttons */
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.7rem 1.6rem;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease,
+        border-color 0.15s ease, background-color 0.15s ease;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4869f6, #6d8bff);
+      color: #ffffff;
+      box-shadow: 0 14px 36px rgba(72, 105, 246, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 42px rgba(72, 105, 246, 0.65);
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--hn-border-soft);
+      color: var(--hn-text-main);
+      padding-inline: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+      background: rgba(255, 255, 255, 0.14);
+      text-decoration: none;
+    }
+
+    .micro-note {
+      font-size: 0.82rem;
+      color: var(--hn-text-soft);
+      margin-top: 0.2rem;
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 1.1rem 1.5rem 1.4rem;
+      font-size: 0.8rem;
+      color: rgba(245, 247, 255, 0.7);
+      margin-top: 2.5rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .trust-badge {
+      margin-top: 4px;
+      font-size: 0.8rem;
+      color: rgba(245, 247, 255, 0.7);
+      text-align: center;
+    }
+
+    .trust-badge span {
+      display: inline-block;
+      margin: 0 6px;
+      white-space: nowrap;
+    }
+
+    .trust-badge i {
+      margin-right: 4px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 768px) {
+      .nav-shell {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .error-card {
+        padding: 1.7rem 1.5rem 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav-shell">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <div class="brand-text">HomeNetIQ</div>
+          <span class="brand-sub">In-Home Tech Support · Edmonton</span>
+        </div>
+      </div>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/#services">Services</a>
+        <a href="/online-safety-tools.html" class="nav-primary">Connection &amp; Safety Tools</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="error-page">
+    <section class="container">
+      <article class="error-card">
+        <div class="error-kicker">Page not found</div>
+        <h1>Looks like this page has gone offline.</h1>
+        <p class="error-code">Error code: 404</p>
+
+        <p class="error-text">
+          The link you followed may be out of date, or the page might have been moved or renamed.
+          Your internet connection is working — this part of the website just doesn’t exist anymore.
+        </p>
+
+        <ul class="helper-list">
+          <li>Check the web address for spelling mistakes.</li>
+          <li>Use the shortcuts below to get back to a safe place.</li>
+          <li>If you think something is broken on the site, feel free to let me know.</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn-primary" href="/">Return to homepage</a>
+          <a class="btn-secondary" href="/#services">View services</a>
+          <a class="btn-secondary" href="/online-safety-tools.html">Connection &amp; safety tools</a>
+          <a class="btn-secondary" href="mailto:support@homenetiq.ca">Email support</a>
+        </div>
+
+        <p class="micro-note">
+          Need help with your own network or website errors? I can help diagnose Wi-Fi issues,
+          router misconfigurations, and common smart-home or PC problems across Edmonton.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> HomeNetIQ · In-Home Tech Support · Edmonton</div>
+      <div>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/terms.html">Terms of Use</a> |
+        <a href="tel:+15878552210">📞 +1 (587) 855-2210</a>
+      </div>
+    </div>
+
+    <div class="trust-badge">
+      <span><i class="fa-solid fa-lock"></i>HTTPS Secured</span> |
+      <span><i class="fa-solid fa-shield-halved"></i>Cloudflare Protected</span> |
+      <span><i class="fa-solid fa-floppy-disk"></i>Privacy-Focused Hosting</span>
+    </div>
+  </footer>
+
+  <script>
+    // Simple year updater for footer
+    (function () {
+      var yearEl = document.getElementById("year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+    })();
+  </script>
+</body>
+</html>
