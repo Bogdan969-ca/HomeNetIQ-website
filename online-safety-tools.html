@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Connection & Online Safety Tools — HomeNetIQ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Check your internet speed, IP address, website links, email format, and password strength. HomeNetIQ helps Edmonton homeowners and seniors improve Wi-Fi, protect privacy, and stay safer online." />
+
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --hn-bg: #050818;
+      --hn-card: rgba(10, 17, 43, 0.97);
+      --hn-border-soft: rgba(255, 255, 255, 0.16);
+      --hn-accent: #4869f6;
+      --hn-accent-soft: rgba(72, 105, 246, 0.18);
+      --hn-text-main: #f5f7ff;
+      --hn-text-soft: rgba(245, 247, 255, 0.78);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 0% -40%, rgba(72, 105, 246, 0.45), transparent 60%),
+        radial-gradient(circle at 100% 140%, rgba(20, 210, 255, 0.25), transparent 60%),
+        var(--hn-bg);
+      color: var(--hn-text-main);
+    }
+
+    a {
+      color: #a8b8ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* Header / nav */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(5, 8, 24, 0.96), rgba(5, 8, 24, 0.82));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 10% 0%, #ffffff, #a8b8ff 20%, #4869f6 65%, #050818 100%);
+      box-shadow: 0 0 18px rgba(72, 105, 246, 0.75);
+    }
+
+    .brand-text {
+      font-size: 1rem;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 400;
+      opacity: 0.75;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--hn-text-soft);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      border-color: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.04);
+      text-decoration: none;
+    }
+
+    .nav-links .nav-primary {
+      border-color: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--hn-text-main);
+    }
+
+    /* Layout */
+
+    .tools-page {
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .tools-hero {
+      margin-bottom: 2.25rem;
+    }
+
+    .tools-hero-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245, 247, 255, 0.6);
+      margin-bottom: 0.5rem;
+    }
+
+    .tools-hero h1 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      margin: 0 0 0.75rem;
+    }
+
+    .tools-hero p {
+      max-width: 780px;
+      line-height: 1.7;
+      color: var(--hn-text-soft);
+      margin: 0.25rem 0 0;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: var(--hn-card);
+      border-radius: 1.25rem;
+      padding: 1.75rem 1.75rem 2rem;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.38);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1.45rem;
+    }
+
+    .card-intro {
+      margin-top: 0;
+      margin-bottom: 1.4rem;
+      color: var(--hn-text-soft);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .status-block {
+      background: rgba(5, 8, 24, 0.9);
+      border-radius: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .status-block h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .status-block p {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--hn-text-soft);
+      white-space: pre-line;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-top: 0.8rem;
+      color: var(--hn-text-soft);
+    }
+
+    .note strong {
+      color: var(--hn-text-main);
+      font-weight: 600;
+    }
+
+    .external-link {
+      font-size: 0.85rem;
+      margin-top: 0.9rem;
+      color: rgba(245, 247, 255, 0.72);
+    }
+
+    .external-link a {
+      color: #a8b8ff;
+      font-weight: 500;
+    }
+
+    /* Buttons & inputs */
+
+    button {
+      font-family: inherit;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.7rem 1.5rem;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease,
+        border-color 0.15s ease, background-color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      width: 100%;
+      background: linear-gradient(135deg, #4869f6, #6d8bff);
+      color: #ffffff;
+      box-shadow: 0 14px 36px rgba(72, 105, 246, 0.5);
+      margin: 0.2rem 0 0.9rem;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 42px rgba(72, 105, 246, 0.65);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--hn-border-soft);
+      color: var(--hn-text-main);
+      padding-inline: 1.1rem;
+      font-size: 0.9rem;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .tool-block input {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid var(--hn-border-soft);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.55rem 0.9rem;
+      margin-bottom: 0.45rem;
+      color: var(--hn-text-main);
+      font-size: 0.9rem;
+    }
+
+    .tool-block input::placeholder {
+      color: rgba(245, 247, 255, 0.6);
+    }
+
+    .tool-block input:focus {
+      outline: none;
+      border-color: rgba(168, 184, 255, 0.8);
+      box-shadow: 0 0 0 1px rgba(168, 184, 255, 0.65);
+      background: rgba(0, 0, 0, 0.52);
+    }
+
+    /* Right-side tools */
+
+    .tool-block {
+      margin-bottom: 1.45rem;
+    }
+
+    .tool-block h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .tool-result {
+      margin: 0.25rem 0 0;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      min-height: 1.4em;
+      color: var(--hn-text-soft);
+    }
+
+    .password-meter {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 0.4rem;
+    }
+
+    #passwordMeterBar {
+      width: 0;
+      height: 100%;
+      background: #ff5c5c;
+      transition: width 0.2s ease, background-color 0.2s ease;
+    }
+
+    .micro-note {
+      margin-top: 0.35rem;
+      font-size: 0.72rem;
+      color: rgba(245, 247, 255, 0.65);
+      line-height: 1.45;
+    }
+
+    .cta-note {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--hn-text-soft);
+    }
+
+    .inline-link {
+      color: #a8b8ff;
+      font-weight: 500;
+    }
+
+    .inline-link:hover {
+      text-decoration: underline;
+    }
+
+    .sr-only {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 1.1rem 1.5rem 1.4rem;
+      font-size: 0.78rem;
+      color: rgba(245, 247, 255, 0.65);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 864px) {
+      .tools-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .card {
+        padding: 1.5rem 1.35rem 1.8rem;
+      }
+
+      .nav-shell {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .tools-page {
+        padding-inline: 1.1rem;
+      }
+
+      .nav-shell {
+        padding-inline: 1.1rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav-shell">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <div class="brand-text">
+            HomeNetIQ
+          </div>
+          <span class="brand-sub">
+            In-Home Tech Support · Edmonton
+          </span>
+        </div>
+      </div>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/" class="">Home</a>
+        <a href="/online-safety-tools.html" class="nav-primary">Connection & Safety Tools</a>
+        <a href="mailto:support@homenetiq.ca">Email Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="tools-page">
+    <section class="tools-hero container">
+      <div class="tools-hero-kicker">Self-Check Tools</div>
+      <h1>Check Your Connection & Stay Safer Online</h1>
+      <p>
+        Use these quick checks to measure your internet speed, see your current IP address, and validate links, email
+        addresses, and password strength. If anything looks weak or confusing, I can help you improve your Wi-Fi,
+        protect your privacy, and make everyday technology easier to live with.
+      </p>
+    </section>
+
+    <section class="tools-grid container">
+      <!-- LEFT: SPEED + IP -->
+      <article class="card">
+        <h2>Internet Speed & IP Check</h2>
+        <p class="card-intro">
+          This simple test estimates your download and upload speeds and shows the IP address your connection is using
+          right now.
+        </p>
+
+        <div class="status-block">
+          <h3>Your IP address</h3>
+          <p id="ipAddress">Detecting your IP address…</p>
+        </div>
+
+        <button id="runSpeedTest" class="btn-primary">
+          Run Speed Test
+        </button>
+
+        <div class="status-block">
+          <h3>Speed test results</h3>
+          <p id="speedResults">No test run yet.</p>
+        </div>
+
+        <p class="note">
+          If your download or upload speed is below <strong>20 Mbps</strong>, streaming, video calls, and smart-home
+          devices can feel slow or unreliable.
+          <br><br>
+          <strong>If your results are under 20 Mbps, email me at
+          <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a> and I can help review your modem, router,
+          Wi-Fi coverage, and internet plan to improve your experience.</strong>
+        </p>
+
+        <p class="note">
+          When you use <strong>public Wi-Fi</strong> (cafés, hotels, airports), your IP address and traffic on that
+          network can often be visible to others or to the provider. A <strong>VPN</strong> can help hide your real IP
+          address and encrypt what you are doing online.
+          <br><br>
+          <strong>Not sure which VPN to use or how to set it up? Contact me and I’ll show you simple, practical
+          options that fit your needs.</strong>
+        </p>
+
+        <p class="external-link">
+          Prefer a full diagnostic? You can also open
+          <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer">
+            Speedtest by Ookla
+          </a>
+          in a new tab.
+        </p>
+      </article>
+
+      <!-- RIGHT: SAFETY TOOLS -->
+      <article class="card">
+        <h2>Quick Online Safety Tools</h2>
+        <p class="card-intro">
+          These tools help you avoid risky links, mistyped email addresses, and weak passwords. They do not replace a
+          full security review, but they highlight common issues.
+        </p>
+
+        <!-- URL CHECK -->
+        <div class="tool-block">
+          <h3>Website / URL check</h3>
+          <label class="sr-only" for="urlInput">Website URL</label>
+          <input
+            type="text"
+            id="urlInput"
+            placeholder="https://example.com" />
+          <button id="checkUrl" class="btn-secondary">Check URL</button>
+          <p id="urlResult" class="tool-result"></p>
+        </div>
+
+        <!-- EMAIL CHECK -->
+        <div class="tool-block">
+          <h3>Email address check</h3>
+          <label class="sr-only" for="emailInput">Email address</label>
+          <input
+            type="email"
+            id="emailInput"
+            placeholder="name@example.com" />
+          <button id="checkEmail" class="btn-secondary">Check email</button>
+          <p id="emailResult" class="tool-result"></p>
+        </div>
+
+        <!-- PASSWORD STRENGTH -->
+        <div class="tool-block">
+          <h3>Password strength checker</h3>
+          <label class="sr-only" for="passwordInput">Password</label>
+          <input
+            type="password"
+            id="passwordInput"
+            placeholder="Type a sample password (not a real one)" />
+          <button id="checkPassword" class="btn-secondary">Check strength</button>
+
+          <div class="password-meter">
+            <div id="passwordMeterBar"></div>
+          </div>
+
+          <p id="passwordResult" class="tool-result"></p>
+          <p class="micro-note">
+            Do not paste your real banking or primary email passwords here. Use this tool to understand what makes a
+            password strong, then create a unique one in your password manager.
+          </p>
+        </div>
+
+        <p class="cta-note">
+          If these checks raise concerns, I can help you:
+          <strong>secure your Wi-Fi and smart-home devices, choose safer passwords, set up a VPN, and build safer
+          everyday habits online.</strong>
+          <br><br>
+          <a href="mailto:support@homenetiq.ca" class="inline-link">
+            Email me to schedule an in-home visit or remote session.
+          </a>
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> HomeNetIQ · In-Home Tech Support · Edmonton</div>
+      <div>For help with Wi-Fi, smart-home devices, and practical AI tools, email <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a>.</div>
+    </div>
+  </footer>
+
+  <script>
+    // ------- IP detection -------
+    async function detectIp() {
+      const ipEl = document.getElementById("ipAddress");
+      if (!ipEl) return;
+
+      try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        if (!res.ok) throw new Error("IP fetch failed");
+        const data = await res.json();
+        ipEl.textContent = "Your current IP address: " + data.ip;
+      } catch (e) {
+        ipEl.textContent =
+          "We could not fetch your IP address automatically. This can happen on some networks or if a browser extension blocks it.";
+      }
+    }
+
+    // ------- Speed test (approximate) -------
+    async function measureDownload() {
+      const sizeBytes = 5 * 1024 * 1024; // ~5 MB
+      const url = "https://speed.cloudflare.com/__down?bytes=" + sizeBytes;
+      const start = performance.now();
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error("Download failed");
+      await res.arrayBuffer();
+      const seconds = (performance.now() - start) / 1000;
+      return (sizeBytes * 8) / seconds / 1_000_000; // Mbps
+    }
+
+    async function measureUpload() {
+      const sizeBytes = 2 * 1024 * 1024; // ~2 MB
+      const url = "https://speed.cloudflare.com/__up";
+      const buffer = new Uint8Array(sizeBytes);
+      crypto.getRandomValues(buffer);
+      const start = performance.now();
+      const res = await fetch(url, {
+        method: "POST",
+        body: buffer,
+        cache: "no-store"
+      });
+      if (!res.ok) throw new Error("Upload failed");
+      await res.arrayBuffer();
+      const seconds = (performance.now() - start) / 1000;
+      return (sizeBytes * 8) / seconds / 1_000_000; // Mbps
+    }
+
+    function connectionAdvice(down, up) {
+      const threshold = 20;
+      const below = down < threshold || up < threshold;
+
+      if (!below) {
+        return (
+          "Good news: your connection is above the recommended minimum of 20 Mbps for typical home use.\n\n" +
+          "If you still have issues with Wi-Fi coverage, disconnects, or buffering, your router or in-home setup " +
+          "may be the problem – not just raw speed. I can help you evaluate and optimize that."
+        );
+      }
+
+      return (
+        "Your connection appears to be below the recommended 20 Mbps for smooth streaming, video calls, " +
+        "and multiple devices.\n\n" +
+        "Email me at support@homenetiq.ca and I’ll help you review your modem, router, Wi-Fi setup, and " +
+        "internet plan to improve your experience."
+      );
+    }
+
+    async function runSpeedTest() {
+      const button = document.getElementById("runSpeedTest");
+      const out = document.getElementById("speedResults");
+      if (!button || !out) return;
+
+      button.disabled = true;
+      out.textContent = "Running download test…";
+
+      try {
+        const down = await measureDownload();
+        out.textContent = "Download speed: " + down.toFixed(2) + " Mbps\nRunning upload test…";
+
+        const up = await measureUpload();
+        out.textContent =
+          "Download speed: " + down.toFixed(2) + " Mbps\n" +
+          "Upload speed: " + up.toFixed(2) + " Mbps\n\n" +
+          connectionAdvice(down, up);
+      } catch (e) {
+        console.error(e);
+        out.textContent =
+          "We ran into a problem while testing your connection. This can happen on restricted networks or " +
+          "if something blocks the test.\n\nYou can also run a full test at Speedtest.net in a new tab.";
+      } finally {
+        button.disabled = false;
+      }
+    }
+
+    // ------- URL validation -------
+    function checkUrl() {
+      const input = document.getElementById("urlInput");
+      const result = document.getElementById("urlResult");
+      if (!input || !result) return;
+
+      const value = input.value.trim();
+      if (!value) {
+        result.textContent = "Enter a website address to check.";
+        return;
+      }
+
+      try {
+        const url = new URL(value.startsWith("http") ? value : "https://" + value);
+        let msg = "This looks like a valid website address: " + url.href;
+
+        if (url.protocol !== "https:") {
+          msg +=
+            " However, it does not use HTTPS. For sensitive information (banking, logins), " +
+            "you should prefer sites that start with https:// and show a lock icon.";
+        } else {
+          msg +=
+            " It uses HTTPS, which helps protect data in transit. Always still be cautious with unknown sites.";
+        }
+
+        result.textContent = msg;
+      } catch (e) {
+        result.textContent =
+          "This does not look like a properly formatted website address. Be careful before clicking or entering any details.";
+      }
+    }
+
+    // ------- Email validation -------
+    function checkEmail() {
+      const input = document.getElementById("emailInput");
+      const result = document.getElementById("emailResult");
+      if (!input || !result) return;
+
+      const value = input.value.trim();
+      if (!value) {
+        result.textContent = "Enter an email address to check.";
+        return;
+      }
+
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!regex.test(value)) {
+        result.textContent =
+          "This email address does not look correctly formatted. A small typo could send your message to the wrong person.";
+      } else {
+        result.textContent =
+          "The format of this email address looks valid. This does not guarantee it exists, " +
+          "but it reduces the chance of obvious typos.";
+      }
+    }
+
+    // ------- Password strength checker -------
+    function scorePassword(pw) {
+      let score = 0;
+      if (!pw) return 0;
+
+      const length = pw.length;
+      if (length >= 8) score += 1;
+      if (length >= 12) score += 1;
+
+      if (/[a-z]/.test(pw) && /[A-Z]/.test(pw)) score += 1;
+      if (/\d/.test(pw)) score += 1;
+      if (/[^A-Za-z0-9]/.test(pw)) score += 1;
+
+      const lowerPw = pw.toLowerCase();
+      const badPatterns = ["password", "1234", "qwerty", "letmein", "homenetiq"];
+      badPatterns.forEach((p) => {
+        if (lowerPw.includes(p)) score -= 2;
+      });
+
+      return Math.max(0, Math.min(score, 5));
+    }
+
+    function checkPassword() {
+      const input = document.getElementById("passwordInput");
+      const bar = document.getElementById("passwordMeterBar");
+      const result = document.getElementById("passwordResult");
+      if (!input || !bar || !result) return;
+
+      const pw = input.value;
+      const s = scorePassword(pw);
+      const percentage = (s / 5) * 100;
+
+      bar.style.width = percentage + "%";
+
+      let label = "";
+      let color = "#ff5c5c";
+
+      switch (s) {
+        case 0:
+        case 1:
+          label = "Very weak — easy to guess or crack. Do not use this.";
+          color = "#ff5c5c";
+          break;
+        case 2:
+          label = "Weak — better than nothing, but still vulnerable. Add length, numbers, and symbols.";
+          color = "#ff9f43";
+          break;
+        case 3:
+          label = "Fair — acceptable for low-risk accounts, but could be stronger.";
+          color = "#ffc857";
+          break;
+        case 4:
+          label = "Strong — good mix of length and characters.";
+          color = "#7ad97a";
+          break;
+        case 5:
+          label = "Very strong — long, complex, and harder to break (especially if unique).";
+          color = "#4cd964";
+          break;
+      }
+
+      bar.style.backgroundColor = color;
+      result.textContent = label;
+    }
+
+    // ------- Page init -------
+    document.addEventListener("DOMContentLoaded", function () {
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      detectIp();
+
+      const btnSpeed = document.getElementById("runSpeedTest");
+      if (btnSpeed) btnSpeed.addEventListener("click", runSpeedTest);
+
+      const btnUrl = document.getElementById("checkUrl");
+      if (btnUrl) btnUrl.addEventListener("click", checkUrl);
+
+      const btnEmail = document.getElementById("checkEmail");
+      if (btnEmail) btnEmail.addEventListener("click", checkEmail);
+
+      const btnPw = document.getElementById("checkPassword");
+      if (btnPw) btnPw.addEventListener("click", checkPassword);
+    });
+  </script>
+</body>
+</html>
