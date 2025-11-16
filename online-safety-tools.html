@@ -4,7 +4,10 @@
   <meta charset="utf-8" />
   <title>Connection & Online Safety Tools — HomeNetIQ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Check your internet speed, IP address, website links, email format, and password strength. HomeNetIQ helps Edmonton homeowners and seniors improve Wi-Fi, protect privacy, and stay safer online." />
+  <meta name="description" content="Check your IP address, validate website links, verify email format, and test password strength. HomeNetIQ helps Edmonton homeowners and seniors improve Wi-Fi, protect privacy, and stay safer online." />
+
+  <!-- Font Awesome for footer and trust-badge icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
     :root {
@@ -265,6 +268,7 @@
     .btn-primary:hover:not(:disabled) {
       transform: translateY(-1px);
       box-shadow: 0 18px 42px rgba(72, 105, 246, 0.65);
+      text-decoration: none;
     }
 
     .btn-primary:disabled {
@@ -286,6 +290,7 @@
       transform: translateY(-1px);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
       background: rgba(255, 255, 255, 0.16);
+      text-decoration: none;
     }
 
     .tool-block input {
@@ -383,19 +388,31 @@
 
     footer {
       border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 1.1rem 1.5rem 1.4rem;
+      padding: 1.1rem 1.5rem 1.1rem;
       font-size: 0.78rem;
-      color: rgba(245, 247, 255, 0.65);
+      color: rgba(245, 247, 255, 0.8);
+      text-align: center;
     }
 
-    .footer-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.6rem;
+    footer a {
+      color: #a8b8ff;
+    }
+
+    .trust-badge {
+      margin: 0 0 1.4rem;
+      font-size: 0.78rem;
+      text-align: center;
+      color: rgba(245, 247, 255, 0.7);
+    }
+
+    .trust-badge span {
+      display: inline-block;
+      margin: 0 6px;
+      white-space: nowrap;
+    }
+
+    .trust-badge i {
+      margin-right: 4px;
     }
 
     /* Responsive */
@@ -465,9 +482,9 @@
       <div class="tools-hero-kicker">Self-Check Tools</div>
       <h1>Check Your Connection & Stay Safer Online</h1>
       <p>
-        Use these quick checks to measure your internet speed, see your current IP address, and validate links, email
-        addresses, and password strength. If anything looks weak or confusing, I can help you improve your Wi-Fi,
-        protect your privacy, and make everyday technology easier to live with.
+        Use these quick checks to see your current IP address and validate links, email addresses, and password strength.
+        When something looks weak or confusing, I can help you improve your Wi-Fi, protect your privacy, and make everyday
+        technology easier to live with.
       </p>
     </section>
 
@@ -476,8 +493,7 @@
       <article class="card">
         <h2>Internet Speed & IP Check</h2>
         <p class="card-intro">
-          This simple test estimates your download and upload speeds and shows the IP address your connection is using
-          right now.
+          Quickly confirm your IP address and run a professional speed test in a new tab to check your connection quality.
         </p>
 
         <div class="status-block">
@@ -485,39 +501,39 @@
           <p id="ipAddress">Detecting your IP address…</p>
         </div>
 
-        <button id="runSpeedTest" class="btn-primary">
-          Run Speed Test
-        </button>
+        <a
+          href="https://www.speedtest.net/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary"
+        >
+          Open Speedtest.net
+        </a>
 
         <div class="status-block">
-          <h3>Speed test results</h3>
-          <p id="speedResults">No test run yet.</p>
+          <h3>How to understand the results</h3>
+          <p>
+Most homes and small offices work best with speeds above 20 Mbps for both download and upload.
+If you see results below that, you may notice buffering, slow websites, dropped video calls, or
+smart-home devices failing to connect reliably.
+          </p>
         </div>
 
         <p class="note">
-          If your download or upload speed is below <strong>20 Mbps</strong>, streaming, video calls, and smart-home
-          devices can feel slow or unreliable.
-          <br><br>
-          <strong>If your results are under 20 Mbps, email me at
-          <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a> and I can help review your modem, router,
-          Wi-Fi coverage, and internet plan to improve your experience.</strong>
+          If your Speedtest results are under <strong>20 Mbps</strong>, email me at
+          <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a>. I can help review your modem, router,
+          Wi-Fi coverage, and internet plan to improve your experience.
         </p>
 
         <p class="note">
           When you use <strong>public Wi-Fi</strong> (cafés, hotels, airports), your IP address and traffic on that
-          network can often be visible to others or to the provider. A <strong>VPN</strong> can help hide your real IP
-          address and encrypt what you are doing online.
-          <br><br>
-          <strong>Not sure which VPN to use or how to set it up? Contact me and I’ll show you simple, practical
-          options that fit your needs.</strong>
+          network can often be visible to others or to the provider. A <strong>VPN</strong> helps protect your privacy
+          by hiding your real IP address and encrypting what you are doing online.
         </p>
 
-        <p class="external-link">
-          Prefer a full diagnostic? You can also open
-          <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer">
-            Speedtest by Ookla
-          </a>
-          in a new tab.
+        <p class="note">
+          Not sure which VPN to use or how to set it up? Contact me and I’ll show you simple, practical options that fit
+          your needs and comfort level.
         </p>
       </article>
 
@@ -525,8 +541,8 @@
       <article class="card">
         <h2>Quick Online Safety Tools</h2>
         <p class="card-intro">
-          These tools help you avoid risky links, mistyped email addresses, and weak passwords. They do not replace a
-          full security review, but they highlight common issues.
+          These tools help you avoid risky links, mistyped email addresses, and weak passwords. They don’t replace a full
+          security review, but they highlight common issues so you know when to be careful.
         </p>
 
         <!-- URL CHECK -->
@@ -575,7 +591,7 @@
         </div>
 
         <p class="cta-note">
-          If these checks raise concerns, I can help you:
+          If these checks raise concerns, I can help you
           <strong>secure your Wi-Fi and smart-home devices, choose safer passwords, set up a VPN, and build safer
           everyday habits online.</strong>
           <br><br>
@@ -587,11 +603,17 @@
     </section>
   </main>
 
+  <div class="trust-badge">
+    <span><i class="fa-solid fa-lock"></i>HTTPS Secured</span> |
+    <span><i class="fa-solid fa-shield-halved"></i>Cloudflare Protected</span> |
+    <span><i class="fa-solid fa-floppy-disk"></i>Privacy-Focused Hosting</span>
+  </div>
+
   <footer>
-    <div class="footer-inner">
-      <div>© <span id="year"></span> HomeNetIQ · In-Home Tech Support · Edmonton</div>
-      <div>For help with Wi-Fi, smart-home devices, and practical AI tools, email <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a>.</div>
-    </div>
+    © 2025 HomeNetIQ. All rights reserved. |
+    <a href="/privacy.html">Privacy Policy</a> |
+    <a href="/terms.html">Terms of Use</a> |
+    <a href="tel:+15878552210"><i class="fa-solid fa-phone"></i> +1 (587) 855-2210</a>
   </footer>
 
   <script>
@@ -608,82 +630,6 @@
       } catch (e) {
         ipEl.textContent =
           "We could not fetch your IP address automatically. This can happen on some networks or if a browser extension blocks it.";
-      }
-    }
-
-    // ------- Speed test (approximate) -------
-    async function measureDownload() {
-      const sizeBytes = 5 * 1024 * 1024; // ~5 MB
-      const url = "https://speed.cloudflare.com/__down?bytes=" + sizeBytes;
-      const start = performance.now();
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error("Download failed");
-      await res.arrayBuffer();
-      const seconds = (performance.now() - start) / 1000;
-      return (sizeBytes * 8) / seconds / 1_000_000; // Mbps
-    }
-
-    async function measureUpload() {
-      const sizeBytes = 2 * 1024 * 1024; // ~2 MB
-      const url = "https://speed.cloudflare.com/__up";
-      const buffer = new Uint8Array(sizeBytes);
-      crypto.getRandomValues(buffer);
-      const start = performance.now();
-      const res = await fetch(url, {
-        method: "POST",
-        body: buffer,
-        cache: "no-store"
-      });
-      if (!res.ok) throw new Error("Upload failed");
-      await res.arrayBuffer();
-      const seconds = (performance.now() - start) / 1000;
-      return (sizeBytes * 8) / seconds / 1_000_000; // Mbps
-    }
-
-    function connectionAdvice(down, up) {
-      const threshold = 20;
-      const below = down < threshold || up < threshold;
-
-      if (!below) {
-        return (
-          "Good news: your connection is above the recommended minimum of 20 Mbps for typical home use.\n\n" +
-          "If you still have issues with Wi-Fi coverage, disconnects, or buffering, your router or in-home setup " +
-          "may be the problem – not just raw speed. I can help you evaluate and optimize that."
-        );
-      }
-
-      return (
-        "Your connection appears to be below the recommended 20 Mbps for smooth streaming, video calls, " +
-        "and multiple devices.\n\n" +
-        "Email me at support@homenetiq.ca and I’ll help you review your modem, router, Wi-Fi setup, and " +
-        "internet plan to improve your experience."
-      );
-    }
-
-    async function runSpeedTest() {
-      const button = document.getElementById("runSpeedTest");
-      const out = document.getElementById("speedResults");
-      if (!button || !out) return;
-
-      button.disabled = true;
-      out.textContent = "Running download test…";
-
-      try {
-        const down = await measureDownload();
-        out.textContent = "Download speed: " + down.toFixed(2) + " Mbps\nRunning upload test…";
-
-        const up = await measureUpload();
-        out.textContent =
-          "Download speed: " + down.toFixed(2) + " Mbps\n" +
-          "Upload speed: " + up.toFixed(2) + " Mbps\n\n" +
-          connectionAdvice(down, up);
-      } catch (e) {
-        console.error(e);
-        out.textContent =
-          "We ran into a problem while testing your connection. This can happen on restricted networks or " +
-          "if something blocks the test.\n\nYou can also run a full test at Speedtest.net in a new tab.";
-      } finally {
-        button.disabled = false;
       }
     }
 
@@ -809,13 +755,7 @@
 
     // ------- Page init -------
     document.addEventListener("DOMContentLoaded", function () {
-      const yearEl = document.getElementById("year");
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
-
       detectIp();
-
-      const btnSpeed = document.getElementById("runSpeedTest");
-      if (btnSpeed) btnSpeed.addEventListener("click", runSpeedTest);
 
       const btnUrl = document.getElementById("checkUrl");
       if (btnUrl) btnUrl.addEventListener("click", checkUrl);
