@@ -8,14 +8,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HomeNetIQ — Home Networking & AI Help</title>
-  <meta name="description" content="HomeNetIQ helps Alberta households and small offices with reliable Wi-Fi, secure networks, device troubleshooting, and practical AI coaching." />
+  <meta name="description" content="HomeNetIQ helps Alberta households and small offices with reliable Wi-Fi, secure networks, practical AI coaching, smart-home setup, and friendly tech support." />
 
   <!-- Security: strict Content Security Policy (CSP) -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     img-src 'self' data:;
-    font-src 'self' https://cdnjs.cloudflare.com;
-    style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+    font-src 'self';
+    style-src 'self' 'unsafe-inline';
     script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;
     connect-src 'self' https://formspree.io https://www.google-analytics.com;
     object-src 'none';
@@ -24,165 +24,214 @@
     form-action 'self' https://formspree.io;
     upgrade-insecure-requests">
 
-  <!-- Font Awesome for footer trust-badge icons (matches tools page) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
   <style>
-    :root{
-      --bg:#050818;          /* background */
-      --fg:#eaf1ff;          /* text */
-      --muted:#9bb3d1;       /* secondary text */
-      --brand:#6aa6ff;       /* accent */
-      --card:#121823;        /* card background */
-      --ring:#264a86;        /* focus ring */
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    :root {
+      --hn-bg: #050818;
+      --hn-text-main: #eaf1ff;
+      --hn-text-muted: #9bb3d1;
+      --hn-accent: #6aa6ff;
+
+      --card-bg: #0e1320;
+      --card-border: #1b2533;
+
+      --input-bg: #0f1724;
+      --input-border: #26364f;
     }
 
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%;scroll-behavior:smooth}
+    * { box-sizing: border-box; }
 
-    body{
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      /* One constant background: top glow + solid navy base */
+    html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
       background:
         radial-gradient(circle at 0% -40%, rgba(72,105,246,0.45), transparent 60%),
-        #071a30;
-      color:var(--fg);
+        radial-gradient(circle at 100% 140%, rgba(20,210,255,0.25), transparent 60%),
+        var(--hn-bg);
+      color: var(--hn-text-main);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     }
 
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline;text-underline-offset:2px}
+    a { color: var(--hn-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    .container{max-width:1120px;margin:0 auto;padding:24px}
+    /* NAVIGATION */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: saturate(150%) blur(10px);
+      background: rgba(5,8,24,0.75);
+      border-bottom: 1px solid #1b2533;
+    }
+    nav .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 800;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .logo .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg,#6aa6ff,#7dd3fc,#6aa6ff);
+    }
+    .links a {
+      margin: 0 12px;
+      color: var(--hn-text-main);
+      opacity: .85;
+    }
+    .links a:hover { opacity: 1; }
 
-    /* Header / nav (aligned with tools page) */
-    header.site-header{
-      position:sticky;
-      top:0;
-      z-index:10;
-      backdrop-filter:blur(14px);
-      background:linear-gradient(to bottom, rgba(5,8,24,0.96), rgba(5,8,24,0.85));
-      border-bottom:1px solid rgba(255,255,255,0.06);
+    /* HERO */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+    }
+    .hero h1 {
+      font-size: 44px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .hero p {
+      color: var(--hn-text-muted);
+      max-width: 760px;
+      font-size: 18px;
+    }
+    .local-note {
+      text-align: center;
+      font-weight: 600;
+      color: var(--hn-text-muted);
+      font-size: 17px;
+      margin-bottom: 26px;
     }
 
-    .nav-shell{
-      max-width:1120px;
-      margin:0 auto;
-      padding:0.75rem 1.5rem;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
+    .cta {
+      margin-top: 26px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background: var(--hn-accent);
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      color: #0a0f16;
+    }
+    .btn.secondary {
+      background: #1a2636;
+      border: 1px solid #26364f;
+      color: var(--hn-text-main);
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:0.6rem;
+    /* GRID + CARDS */
+    section { padding: 56px 24px; }
+    .section-title {
+      max-width: 1100px;
+      margin: 0 auto 20px;
+      font-size: 28px;
     }
 
-    .brand-mark{
-      width:32px;
-      height:32px;
-      border-radius:10px;
-      background:radial-gradient(circle at 10% 0%, #ffffff, #a8b8ff 20%, #4869f6 65%, #050818 100%);
-      box-shadow:0 0 18px rgba(72,105,246,0.75);
+    .grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
     }
 
-    .brand-text{
-      font-size:1rem;
-      font-weight:650;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 18px;
+      border-radius: 16px;
+    }
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--hn-text-main);
+    }
+    .card p {
+      color: var(--hn-text-muted);
+      margin: 0;
+      line-height: 1.5;
     }
 
-    .brand-sub{
-      display:block;
-      font-size:0.7rem;
-      font-weight:400;
-      opacity:0.75;
-      letter-spacing:0.16em;
-      text-transform:uppercase;
+    /* ABOUT */
+    .about {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .about .note {
+      border-left: 3px solid var(--hn-accent);
+      padding-left: 12px;
+      color: var(--hn-text-muted);
+    }
+    .check {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .check .tick {
+      background: linear-gradient(180deg,#79b1ff,#478dff);
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
+      color: #07111f;
+      font-weight: 900;
+      font-size: 14px;
     }
 
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:0.8rem;
-      font-size:0.9rem;
+    /* INPUTS / FORM */
+    form {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 10px;
+    }
+    input, textarea {
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      color: var(--hn-text-main);
+      padding: 12px 14px;
+      border-radius: 12px;
+      width: 100%;
+    }
+    textarea {
+      min-height: 120px;
+      resize: vertical;
     }
 
-    .nav-links a{
-      padding:0.35rem 0.8rem;
-      border-radius:999px;
-      border:1px solid transparent;
-      color:rgba(234,241,255,0.85);
-      text-decoration:none;
-      white-space:nowrap;
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 28px 24px 8px;
+      color: var(--hn-text-muted);
+      border-top: 1px solid #1b2533;
+      margin-top: 40px;
     }
 
-    .nav-links a:hover{
-      border-color:rgba(255,255,255,0.16);
-      background:rgba(255,255,255,0.04);
-      text-decoration:none;
-    }
-
-    .nav-links .nav-primary{
-      border-color:rgba(255,255,255,0.16);
-      background:rgba(255,255,255,0.06);
-      color:#f5f7ff;
-    }
-
-    /* Hero */
-    main{display:block}
-
-    .hero{
-      padding:80px 24px 48px;
-    }
-    .hero h1{font-size:44px;line-height:1.05;margin:0 0 16px}
-    .hero p{max-width:780px;color:var(--muted);font-size:18px}
-    .cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{
-      appearance:none;border:none;padding:14px 18px;border-radius:14px;
-      background:var(--brand);color:#0a0f16;font-weight:700;
-      box-shadow:var(--shadow);cursor:pointer;
-      display:inline-flex;align-items:center;justify-content:center;
-    }
-    .btn:hover{transform:translateY(-1px);text-decoration:none}
-    .btn.secondary{background:#1a2636;color:var(--fg);border:1px solid #26364f}
-
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:var(--card);border:1px solid #1f2b3d;border-radius:16px;padding:18px;box-shadow:var(--shadow)}
-    .card h3{margin:0 0 8px;font-size:18px}
-    .card p{margin:0;color:var(--muted);font-size:14px}
-
-    section{padding:56px 24px}
-    .section-title{font-size:28px;margin:0 0 18px}
-
-    .check{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
-    .check .tick{width:18px;height:18px;border-radius:4px;background:linear-gradient(180deg,#79b1ff,#478dff);display:grid;place-items:center;color:#07111f;font-weight:900}
-
-    .about{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
-    .about .note{border-left:3px solid var(--brand);padding-left:12px;color:var(--muted)}
-
-    form{display:grid;gap:10px}
-    input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #26364f;background:#0f1724;color:var(--fg)}
-    input:focus,textarea:focus{outline:2px solid var(--ring);border-color:transparent}
-    textarea{min-height:120px;resize:vertical}
-    .tag{display:inline-block;font-size:12px;background:#122036;border:1px solid #1f3353;color:#b7cdf0;padding:6px 10px;border-radius:999px}
-
-    footer{
-      padding:28px 24px;
-      color:#89a2c4;
-      border-top:1px solid #1c2636;
-      text-align:center;
-    }
-
-    /* Security & Trust Footer Badge (match tools page, with icons) */
     .trust-badge {
-      margin-top: 10px;
+      margin: 6px 0 20px;
       font-size: 13px;
-      color: var(--muted);
+      color: var(--hn-text-muted);
       text-align: center;
       opacity: 0.9;
     }
@@ -191,154 +240,129 @@
       margin: 0 6px;
       white-space: nowrap;
     }
-    .trust-badge i {
-      margin-right: 4px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    /* Local service note under hero */
-    .local-note{
-      text-align:center;
-      font-weight:600;
-      color:var(--muted);
-      font-size:17px;
-      margin-top:8px;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-
-    @media (max-width:900px){
-      .grid{grid-template-columns:1fr 1fr}
-      .about{grid-template-columns:1fr}
-    }
-    @media (max-width:620px){
-      .grid{grid-template-columns:1fr}
-      .hero h1{font-size:36px}
-      .local-note{ font-size:15px; }
-      .nav-shell{flex-direction:column;align-items:flex-start}
-      .nav-links{flex-wrap:wrap;gap:.4rem}
-    }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="nav-shell">
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true"></div>
-        <div>
-          <div class="brand-text">HomeNetIQ</div>
-          <span class="brand-sub">In-Home Tech Support · Edmonton</span>
-        </div>
-      </div>
 
-      <nav class="nav-links" aria-label="Primary">
+  <!-- NAV -->
+  <nav>
+    <div class="inner">
+      <div class="logo"><span class="dot"></span> HomeNetIQ</div>
+      <div class="links">
         <a href="#services">Services</a>
         <a href="#about">About</a>
-        <a href="/online-safety-tools.html" class="nav-primary">Connection &amp; Safety Tools</a>
+        <a href="/online-safety-tools.html">Connection & Safety Tools</a>
         <a href="#contact">Contact</a>
-      </nav>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="local-note">Proudly serving Edmonton — the capital city of Alberta — and surrounding areas.</p>
+
+    <h1>Smarter homes, simpler tech: Reliable Wi-Fi, seamless devices, and AI made practical for everyday life.</h1>
+
+    <p>Backed by 15 years of IT support experience, HomeNetIQ makes AI easy to understand — helping families, seniors, and small businesses use it with confidence.</p>
+
+    <p style="margin-top:10px">HomeNetIQ sets up reliable home & SOHO networks, fixes Wi-Fi dead spots, secures your devices, and helps you put AI to work — without the jargon. Patient, friendly tech help for anyone who feels left behind by technology. I explain, recommend, and install modern solutions that make life easier.</p>
+
+    <div class="cta">
+      <a class="btn" href="#contact">Get a quote</a>
+      <a class="btn secondary" href="#services">See services</a>
     </div>
   </header>
 
-  <main>
-    <header class="hero container">
-      <p class="local-note">Proudly serving Edmonton — the capital city of Alberta — and surrounding areas.</p>
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 class="section-title">Services</h2>
+    <div class="grid">
 
-      <h1>Smarter homes, simpler tech: Reliable Wi-Fi, seamless devices, and AI made practical for everyday life.</h1>
-      <p style="color:var(--muted);font-size:16px;margin-top:10px">
-        Backed by 15 years of IT support experience, HomeNetIQ makes AI easy to understand — helping families, seniors, and small businesses use it with confidence.
-      </p>
-      <p>
-        HomeNetIQ sets up reliable home &amp; SOHO networks, fixes Wi-Fi dead spots, secures your devices, and helps you put AI to work — without the jargon. Patient, friendly tech help for anyone who feels left behind by technology. I explain, recommend, and install modern solutions that make life easier.
-      </p>
-      <div class="cta">
-        <a class="btn" href="#contact">Get a quote</a>
-        <a class="btn secondary" href="#services">See services</a>
+      <div class="card">
+        <h3>Home & Office Wi-Fi</h3>
+        <p>Say goodbye to dead zones. We install routers, extend coverage, and tune your network for fast, secure, reliable performance.</p>
       </div>
-    </header>
 
-    <section id="services" class="container">
-      <h2 class="section-title">Services</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Home &amp; Office Wi-Fi</h3>
-          <p>Say goodbye to slow internet and dead zones. We install routers, extend coverage, and optimize your Wi-Fi network for fast, secure, and reliable connections throughout your home or office.</p>
-        </div>
-        <div class="card">
-          <h3>Tech Support for Home &amp; Business</h3>
-          <p>From troubleshooting devices to IT consulting, we provide complete tech solutions for households and small businesses. Whether it’s software setup, email integration, or secure backups, we’ve got you covered.</p>
-        </div>
-        <div class="card">
-          <h3>Device Troubleshooting</h3>
-          <p>Get expert tech support right in your home. We help with computer setup, software troubleshooting, device configuration, and making your technology run smoothly — without the hassle of taking it to a shop.</p>
-        </div>
-        <div class="card">
-          <h3>Smart-Home Setup</h3>
-          <p>Upgrade your home with smart locks, thermostats, cameras, and lighting systems. We’ll install, configure, and integrate your devices for maximum convenience and security.</p>
-        </div>
-        <div class="card">
-          <h3>Practical AI Coaching</h3>
-          <p>Helping families and small businesses feel confident using AI in daily life — with easy-to-use personal assistants, simple guidance, and safe routines.</p>
-        </div>
-        <div class="card">
-          <h3>Additional Services</h3>
-          <p>From streaming device setup and parental controls to subscription management and one-on-one tech support, we offer full-service help for everything technology-related — in-person or remote.</p>
-        </div>
+      <div class="card">
+        <h3>Tech Support for Home & Business</h3>
+        <p>Software support, device setup, email integration, security basics, and troubleshooting — without the frustration.</p>
       </div>
-    </section>
 
-    <section id="about" class="container">
-      <h2 class="section-title">About</h2>
-      <div class="about">
-        <div>
-          <p class="note">Based in Alberta, HomeNetIQ brings enterprise-grade know-how to everyday tech. We focus on reliability, security, and clear communication.</p>
-          <div class="check"><span class="tick">✓</span><div>Transparent pricing &amp; clear scopes before work begins</div></div>
-          <div class="check"><span class="tick">✓</span><div>Vendor-neutral advice: we recommend what fits, not what’s hyped</div></div>
-          <div class="check"><span class="tick">✓</span><div>Weekend &amp; evening slots available by request</div></div>
-        </div>
-        <div class="card">
-          <h3>Typical Packages</h3>
-          <p class="muted">Every home is different — these are starting points:</p>
-          <ul>
-            <li><strong>Wi-Fi Tune-Up</strong>: survey, channel plan, and router tune — <em>1–2 hrs</em></li>
-            <li><strong>Mesh Upgrade</strong>: plan, install, optimize — <em>2–4 hrs + hardware</em></li>
-            <li><strong>Security Basics</strong>: backups, DNS filter, updates — <em>1–2 hrs</em></li>
-          </ul>
-        </div>
+      <div class="card">
+        <h3>Device Troubleshooting</h3>
+        <p>Friendly, in-home tech help for computers, tablets, phones, printers, smart-TVs, streaming devices, and more.</p>
       </div>
-    </section>
 
-    <section id="contact" class="container">
-      <h2 class="section-title">Contact</h2>
-      <p>Tell us a bit about your setup and the issues you’re facing. We’ll get back to you with options and a transparent estimate.</p>
+      <div class="card">
+        <h3>Smart-Home Setup</h3>
+        <p>Locks, thermostats, cameras, lights, and automations — installed and configured so everything works smoothly.</p>
+      </div>
 
-      <form action="https://formspree.io/f/xeorerbw" method="POST">
-        <!-- Optional subject shown in email -->
-        <input type="hidden" name="_subject" value="New inquiry from HomeNetIQ site">
-        <!-- Redirect after submit -->
-        <input type="hidden" name="_redirect" value="https://homenetiq.ca/thanks.html">
+      <div class="card">
+        <h3>Practical AI Coaching</h3>
+        <p>Simple, safe, hands-on AI guidance for seniors, families, and small offices.</p>
+      </div>
 
-        <!-- Simple honeypot (spam trap) -->
-        <p class="hidden" style="position:absolute; left:-9999px; opacity:0;">
-          <label>Don’t fill this out: <input name="bot-field" /></label>
-        </p>
+      <div class="card">
+        <h3>Additional Services</h3>
+        <p>Parental controls, backups, subscription cleanup, media streaming optimization, and more — in-person or remote.</p>
+      </div>
 
-        <input name="name" placeholder="Your name" required />
-        <input name="email" type="email" placeholder="Email" required />
-        <input name="phone" type="tel" placeholder="Phone (optional)" />
-        <textarea name="message" placeholder="What can we help with?" required></textarea>
+    </div>
+  </section>
 
-        <button class="btn" type="submit">Send</button>
-      </form>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">About</h2>
 
-      <p style="color:var(--muted);font-size:14px;margin-top:6px">
-        Prefer direct email? Write to <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a>
-      </p>
-    </section>
-  </main>
+    <div class="about">
+      <div>
+        <p class="note">Based in Alberta, HomeNetIQ brings enterprise-grade know-how to everyday tech. Clear communication, reliability, and security come first.</p>
 
+        <div class="check"><span class="tick">✓</span><div>Transparent pricing and clear scope</div></div>
+        <div class="check"><span class="tick">✓</span><div>Vendor-neutral recommendations</div></div>
+        <div class="check"><span class="tick">✓</span><div>Weekend & evening time slots available</div></div>
+      </div>
+
+      <div class="card">
+        <h3>Typical Packages</h3>
+        <p style="color:var(--hn-text-muted)">Every home is different — here are starting points:</p>
+        <ul>
+          <li><strong>Wi-Fi Tune-Up</strong>: channel plan, router tuning — <em>1–2 hrs</em></li>
+          <li><strong>Mesh Upgrade</strong>: plan, install, optimize — <em>2–4 hrs + hardware</em></li>
+          <li><strong>Security Basics</strong>: backups, DNS filter, updates — <em>1–2 hrs</em></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <p style="max-width:1100px;margin:0 auto 20px;color:var(--hn-text-muted)">Tell us a bit about your setup and the issues you're facing. We’ll get back to you with options and a transparent estimate.</p>
+
+    <form action="https://formspree.io/f/xeorerbw" method="POST">
+      <input type="hidden" name="_subject" value="New inquiry from HomeNetIQ site">
+      <input type="hidden" name="_redirect" value="https://homenetiq.ca/thanks.html">
+
+      <div style="position:absolute;left:-9999px;opacity:0;">
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </div>
+
+      <input name="name" placeholder="Your name" required />
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="phone" type="tel" placeholder="Phone (optional)" />
+      <textarea name="message" placeholder="What can we help with?" required></textarea>
+
+      <button class="btn" type="submit">Send</button>
+    </form>
+
+    <p style="color:var(--hn-text-muted);font-size:14px;text-align:center;margin-top:8px">
+      Prefer direct email? Write to <a href="mailto:support@homenetiq.ca">support@homenetiq.ca</a>
+    </p>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     © 2025 HomeNetIQ. All rights reserved. |
     <a href="/privacy.html">Privacy Policy</a> |
@@ -347,9 +371,11 @@
   </footer>
 
   <div class="trust-badge">
-    <span><i class="fa-solid fa-lock"></i>HTTPS Secured</span> |
-    <span><i class="fa-solid fa-shield-halved"></i>Cloudflare Protected</span> |
-    <span><i class="fa-solid fa-floppy-disk"></i>Privacy-Focused Hosting</span>
+    <span>🔒 HTTPS Secured</span> |
+    <span>🛡️ Cloudflare Protected</span> |
+    <span>💾 Privacy-Focused Hosting</span>
   </div>
+
 </body>
 </html>
+
