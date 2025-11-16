@@ -256,6 +256,15 @@
       margin: 0 6px;
       white-space: nowrap;
     }
+    .nav-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  margin-right: 10px;
+  border-radius: 4px;
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.4));
+}
+
   </style>
 </head>
 <body>
@@ -263,7 +272,11 @@
   <!-- NAV -->
   <nav>
     <div class="inner">
-      <div class="logo"><span class="dot"></span> HomeNetIQ</div>
+      <div class="logo">
+  <img src="/nav-icon.png" alt="HomeNetIQ logo" class="nav-icon">
+  HomeNetIQ
+</div>
+
       <div class="links">
         <a href="#services">Services</a>
         <a href="#about">About</a>
