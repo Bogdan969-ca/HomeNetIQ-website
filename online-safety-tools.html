@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>Connection & Online Safety Tools — HomeNetIQ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Icons -->
+  <!-- Icons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.webmanifest">
@@ -81,12 +81,13 @@
       gap: 0.6rem;
     }
 
-    .brand-mark {
+    /* NEW: logo image in header */
+    .nav-logo {
       width: 32px;
       height: 32px;
-      border-radius: 10px;
-      background: radial-gradient(circle at 10% 0%, #ffffff, #a8b8ff 20%, #4869f6 65%, #050818 100%);
-      box-shadow: 0 0 18px rgba(72, 105, 246, 0.75);
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 0 14px rgba(0, 0, 0, 0.55);
     }
 
     .brand-text {
@@ -466,7 +467,7 @@
   <header>
     <div class="nav-shell">
       <div class="brand">
-        <div class="brand-mark" aria-hidden="true"></div>
+        <img src="/nav-icon.png" alt="HomeNetIQ logo" class="nav-logo">
         <div>
           <div class="brand-text">
             HomeNetIQ
@@ -521,9 +522,8 @@
         <div class="status-block">
           <h3>How to understand the results</h3>
           <p>
-  Most homes and small offices work best with speeds above 50 Mbps for both download and upload. If you see results below that, you may notice buffering, slow websites, dropped video calls, or smart-home devices failing to connect reliably.
-</p>
-
+Most homes and small offices work best with speeds above 50 Mbps for both download and upload. If you see results below that, you may notice buffering, slow websites, dropped video calls, or smart-home devices failing to connect reliably.
+          </p>
         </div>
 
         <p class="note">
